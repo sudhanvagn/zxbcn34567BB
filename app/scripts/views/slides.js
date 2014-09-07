@@ -38,7 +38,7 @@ define(['backbone','views/slide'], function(Backbone,SlideView){
 
 			this.animateToNewSlide(slides, newSlide, opts.direction);
 			
-			App.router.navigate('/slides'+this.currentSlideIndex);
+			App.router.navigate('/slides/'+this.currentSlideIndex);
 		},
 
 		getNextSlide : function(slides){
@@ -46,7 +46,6 @@ define(['backbone','views/slide'], function(Backbone,SlideView){
 		},
 		animateToNewSlide: function(slides, newSlide, direction){
 			slides.filter(':visible')
-				.css('position','absolute') //Temporary
 				.animate({
 					top: direction === 'next'? '100%' : '-100%',
 					opacity: 'hide'
@@ -56,7 +55,6 @@ define(['backbone','views/slide'], function(Backbone,SlideView){
 
 					//bring new slide into view
 					newSlide
-						.css('position','absolute')
 						.css('top',direction === 'next' ? '-100%' : '100%')
 						.animate({
 							top: 0,
